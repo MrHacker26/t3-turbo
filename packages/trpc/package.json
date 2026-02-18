@@ -1,0 +1,30 @@
+{
+  "name": "@t3-turbo/trpc",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "dev": "tsc",
+    "build": "tsc",
+    "lint": "eslint --fix --cache .",
+    "format": "prettier --write --cache --ignore-path .gitignore --ignore-path ../../.gitignore .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@trpc/server": "11.10.0",
+    "superjson": "2.2.6",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@t3-turbo/config": "workspace:*",
+    "eslint": "9",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  }
+}

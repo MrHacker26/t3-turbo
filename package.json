@@ -9,7 +9,7 @@
     "lint:root": "eslint --cache --no-error-on-unmatched-pattern *.js *.ts scripts/**/*.ts",
     "lint:workspace": "turbo lint --ui=stream",
     "format": "turbo run format --continue -- --cache --ignore-path .gitignore --ignore-path ../../.gitignore",
-    "check-types": "turbo run check-types",
+    "typecheck": "turbo run typecheck --ui=stream",
     "clean": "echo 'Cleaning...' && bunx rimraf --glob '**/{node_modules,dist,.next,.turbo}'",
     "typecheck:watch": "turbo typecheck:watch",
     "match-versions": "bun run scripts/match-versions.ts"

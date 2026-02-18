@@ -26,6 +26,7 @@ coverage
 out/
 build
 dist
+*.tsbuildinfo
 
 
 # Debug
@@ -39,3 +40,4 @@ yarn-error.log*
 
 # Cache
 .eslintcache
+.prettiercache
