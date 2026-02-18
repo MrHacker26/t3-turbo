@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "files": [
+    "base.json",
     "prettier.config.js",
     "eslint.config.js"
   ],
@@ -10,7 +11,7 @@
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@stylistic/eslint-plugin": "5.8.0",
-    "eslint": "^10.0.0",
+    "eslint": "9",
     "eslint-plugin-import": "2.32.0",
     "globals": "17.3.0",
     "prettier": "3.8.1",

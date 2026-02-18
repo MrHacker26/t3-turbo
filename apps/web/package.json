@@ -7,8 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "format": "prettier --check . --ignore-path ../../.gitignore"
+    "lint": "eslint --fix --cache .",
+    "format": "prettier --write --cache --ignore-path .gitignore --ignore-path ../../.gitignore ."
   },
   "dependencies": {
     "next": "16.1.6",
@@ -25,9 +25,9 @@
     "eslint": "9",
     "eslint-config-next": "16.1.6",
     "prettier": "3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
+    "prettier-plugin-tailwindcss": "0.7.2",
     "tailwindcss": "4",
-    "typescript": "5"
+    "typescript": "5.9.3"
   },
   "ignoreScripts": [
     "sharp",
