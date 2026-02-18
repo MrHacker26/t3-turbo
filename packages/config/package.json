@@ -1,6 +1,7 @@
 {
   "name": "@t3-turbo/config",
   "private": true,
+  "type": "module",
   "files": [
     "prettier.config.js",
     "eslint.config.js"
