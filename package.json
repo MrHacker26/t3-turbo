@@ -12,7 +12,10 @@
     "typecheck": "turbo run typecheck --ui=stream",
     "clean": "echo 'Cleaning...' && bunx rimraf --glob '**/{node_modules,dist,.next,.turbo}'",
     "typecheck:watch": "turbo typecheck:watch",
-    "match-versions": "bun run scripts/match-versions.ts"
+    "match-versions": "bun run scripts/match-versions.ts",
+    "db:generate": "turbo db:generate",
+    "db:push": "turbo db:push",
+    "db:studio": "turbo db:studio"
   },
   "devDependencies": {
     "@t3-turbo/config": "workspace:*",

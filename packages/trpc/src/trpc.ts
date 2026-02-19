@@ -1,7 +1,9 @@
 import { initTRPC } from '@trpc/server'
 import superjson from 'superjson'
 
-const t = initTRPC.create({
+import type { Context } from './context'
+
+const t = initTRPC.context<Context>().create({
   transformer: superjson,
 })
 

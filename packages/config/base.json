@@ -4,6 +4,8 @@
     "skipLibCheck": true,
     "incremental": true,
     "strict": true,
+    "declaration": true,
+    "declarationMap": true,
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
