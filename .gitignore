@@ -41,3 +41,6 @@ yarn-error.log*
 # Cache
 .eslintcache
 .prettiercache
+
+# VS Code
+.vscode

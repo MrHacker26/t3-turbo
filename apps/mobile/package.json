@@ -1,0 +1,45 @@
+{
+  "name": "@t3-turbo/mobile",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "scripts": {
+    "dev": "expo start --clear",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "eslint --fix --cache .",
+    "format": "prettier --write --cache --ignore-path .gitignore --ignore-path ../../.gitignore .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@t3-turbo/trpc": "workspace:*",
+    "@tanstack/react-query": "5.90.21",
+    "@trpc/client": "11.10.0",
+    "@trpc/react-query": "11.10.0",
+    "@trpc/server": "11.10.0",
+    "expo": "54.0.33",
+    "expo-auth-session": "7.0.10",
+    "expo-constants": "18.0.13",
+    "expo-crypto": "15.0.8",
+    "expo-font": "14.0.11",
+    "expo-linking": "8.0.11",
+    "expo-router": "6.0.23",
+    "expo-splash-screen": "31.0.13",
+    "expo-status-bar": "3.0.9",
+    "expo-web-browser": "15.0.10",
+    "react": "19.2.3",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "5.6.2",
+    "react-native-screens": "4.23.0",
+    "superjson": "2.2.6"
+  },
+  "devDependencies": {
+    "@t3-turbo/config": "workspace:*",
+    "@types/react": "19.2.3",
+    "eslint": "9",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "private": true
+}
