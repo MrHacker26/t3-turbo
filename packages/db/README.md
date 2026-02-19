@@ -12,14 +12,15 @@ Shared Prisma database client for the T3 Turborepo.
 ## Usage
 
 ```typescript
-import { db } from '@t3-turbo/db';
+import { db } from '@t3-turbo/db'
 
-const posts = await db.post.findMany();
+const posts = await db.post.findMany()
 ```
 
 ## Environment Variables
 
 This package validates:
+
 - `DATABASE_URL` - MongoDB connection string (required)
 - `NODE_ENV` - Environment mode (development/production/test)
 
