@@ -7,6 +7,7 @@ import { logger } from 'hono/logger'
 
 import { env } from './env'
 import { authMiddleware } from './middleware/auth'
+import { authRouter } from './routes/auth'
 
 const app = new Hono()
 
@@ -20,7 +21,6 @@ app.use(
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   }),
 )
-app.use('*', authMiddleware)
 
 app.get('/health', (c) => {
   return c.json({
@@ -35,6 +35,9 @@ app.get('/', (c) => {
   })
 })
 
+app.route('/auth', authRouter)
+
+app.use('/trpc/*', authMiddleware)
 app.all('/trpc/*', async (c) => {
   const response = await fetchRequestHandler({
     router: appRouter,

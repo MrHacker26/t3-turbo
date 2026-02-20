@@ -1,6 +1,10 @@
 import type { Context as HonoContext } from 'hono'
 
-import { extractTokenFromHeader, verifyToken, type AuthUser } from '../lib/jwt'
+import {
+  extractTokenFromHeader,
+  verifyAccessToken,
+  type AuthUser,
+} from '../lib/jwt'
 
 /**
  * Middleware to extract and verify JWT token from request headers
@@ -14,7 +18,7 @@ export async function authMiddleware(
   const token = extractTokenFromHeader(authHeader ?? null)
 
   if (token) {
-    const user = verifyToken(token)
+    const user = verifyAccessToken(token)
     if (user) {
       c.set('user', user)
     }

@@ -14,36 +14,30 @@ export type JWTPayload = z.infer<typeof jwtPayloadSchema>
 
 export type AuthUser = JWTPayload
 
-/**
- * Generate a JWT token for a user
- */
-export function signToken(payload: JWTPayload): string {
+export function signAccessToken(payload: JWTPayload): string {
   return jwt.sign(payload, env.JWT_SECRET, {
+    algorithm: 'HS256',
     expiresIn: env.JWT_EXPIRES_IN,
-  } as jwt.SignOptions)
+  })
 }
 
-/**
- * Verify and decode a JWT token
- */
-export function verifyToken(token: string): AuthUser | null {
+export function verifyAccessToken(token: string): JWTPayload | null {
   try {
-    const decoded = jwt.verify(token, env.JWT_SECRET as string)
-    const parsed = jwtPayloadSchema.safeParse(decoded)
+    const decoded = jwt.verify(token, env.JWT_SECRET, {
+      algorithms: ['HS256'],
+    })
 
+    const parsed = jwtPayloadSchema.safeParse(decoded)
     if (!parsed.success) {
       return null
     }
 
-    return parsed.data as AuthUser
+    return parsed.data
   } catch {
     return null
   }
 }
 
-/**
- * Extract token from Authorization header
- */
 export function extractTokenFromHeader(
   authHeader: string | null,
 ): string | null {
