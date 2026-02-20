@@ -1,31 +1,31 @@
 {
-  "name": "@t3-turbo/trpc",
+  "name": "@t3-turbo/server",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./src/index.ts"
-    }
-  },
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "tsc",
+    "dev": "bun --watch src/index.ts",
     "build": "tsc",
-    "lint": "eslint --fix --cache .",
-    "format": "prettier --write --cache --ignore-path .gitignore --ignore-path ../../.gitignore .",
+    "start": "bun dist/index.js",
+    "lint": "eslint",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@t3-turbo/db": "workspace:*",
+    "@t3-turbo/trpc": "workspace:*",
     "@trpc/server": "11.10.0",
     "hono": "4.7.6",
+    "jsonwebtoken": "9.0.2",
     "superjson": "2.2.6",
     "zod": "4.3.6"
   },
   "devDependencies": {
     "@t3-turbo/config": "workspace:*",
-    "@types/node": "25.2.3",
+    "@types/jsonwebtoken": "9.0.7",
+    "@types/node": "22.13.7",
+    "bun-types": "1.2.6",
     "eslint": "9",
     "prettier": "3.8.1",
     "typescript": "5.9.3"

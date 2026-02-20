@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { publicProcedure, router } from '../trpc'
+import { publicProcedure, protectedProcedure, router } from '../trpc'
 
 export const exampleRouter = router({
   hello: publicProcedure
@@ -16,13 +16,19 @@ export const exampleRouter = router({
       timestamp: new Date(),
     }
   }),
+  getSecretMessage: protectedProcedure.query(({ ctx }) => {
+    return {
+      message: `Hello ${ctx.user.email}! This is a protected message.`,
+      user: ctx.user,
+    }
+  }),
 })
 
 export const postRouter = router({
   getAll: publicProcedure.query(async ({ ctx }) => {
     return ctx.db.post.findMany()
   }),
-  create: publicProcedure
+  create: protectedProcedure
     .input(
       z.object({
         title: z.string().min(1),
@@ -32,6 +38,13 @@ export const postRouter = router({
     .mutation(async ({ ctx, input }) => {
       return ctx.db.post.create({
         data: input,
+      })
+    }),
+  delete: protectedProcedure
+    .input(z.string())
+    .mutation(async ({ ctx, input }) => {
+      return ctx.db.post.delete({
+        where: { id: input },
       })
     }),
 })
