@@ -9,6 +9,7 @@ import {
   Pressable,
 } from 'react-native'
 
+import { GoogleSignInButton } from '@/components/google-sign-in-button'
 import { trpc } from '@/trpc/client'
 
 export default function Index() {
@@ -28,6 +29,8 @@ export default function Index() {
     <ScrollView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>T3 Turbo + Expo 🚀</Text>
+
+        <GoogleSignInButton />
 
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Hello Query</Text>

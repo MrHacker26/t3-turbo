@@ -3,16 +3,14 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createTRPCClient, httpLink, loggerLink } from '@trpc/client'
 import { type ReactNode, useState } from 'react'
+import { useSession } from 'next-auth/react'
 import SuperJSON from 'superjson'
 import { createQueryClient } from './query-client'
 import type { AppRouter } from '@t3-turbo/trpc'
 import { trpc } from './client'
 
 function getBaseUrl() {
-  if (typeof window !== 'undefined') {
-    return ''
-  }
-  return `http://localhost:${process.env.PORT ?? 3000}`
+  return process.env.NEXT_PUBLIC_SERVER_URL
 }
 
 let clientQueryClientSingleton: QueryClient
@@ -26,6 +24,7 @@ function getQueryClient() {
 }
 
 export function TRPCProvider({ children }: { children: ReactNode }) {
+  const { data: session } = useSession()
   const queryClient = getQueryClient()
   const [trpcClient] = useState(() =>
     createTRPCClient<AppRouter>({
@@ -37,10 +36,15 @@ export function TRPCProvider({ children }: { children: ReactNode }) {
         }),
         httpLink({
           transformer: SuperJSON,
-          url: getBaseUrl() + '/api/trpc',
+          url: getBaseUrl() + '/trpc',
           headers() {
             const headers = new Headers()
             headers.set('x-trpc-source', 'nextjs-react')
+
+            if (session?.user.accessToken) {
+              headers.set('Authorization', `Bearer ${session.user.accessToken}`)
+            }
+
             return headers
           },
         }),

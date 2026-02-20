@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "1.23.1",
     "@t3-turbo/trpc": "workspace:*",
     "@tanstack/react-query": "5.90.21",
     "@trpc/client": "11.10.0",
