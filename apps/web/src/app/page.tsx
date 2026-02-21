@@ -8,37 +8,39 @@ export default function Home() {
   const { data: helloData } = trpc.example.hello.useQuery({ name: 'World' })
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black font-sans">
-      <main className="flex w-full max-w-3xl flex-col gap-8 bg-black px-16 py-32">
+    <div className="bg-background flex min-h-screen items-center justify-center font-sans">
+      <main className="flex w-full max-w-3xl flex-col gap-8 px-16 py-32">
         <div className="flex items-center justify-between">
-          <h1 className="tracking-tighttext-zinc-50 text-3xl font-semibold">
+          <h1 className="text-foreground text-3xl font-semibold tracking-tight">
             tRPC + Next.js
           </h1>
           <LoginButton />
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="rounded-lg border border-zinc-800 p-6">
-            <h2 className="mb-2 text-xl font-medium text-zinc-50">
+          <div className="rounded-lg border p-6">
+            <h2 className="text-foreground mb-2 text-xl font-medium">
               Example Query
             </h2>
             {isLoading ? (
-              <p className="text-zinc-600">Loading...</p>
+              <p className="text-muted-foreground">Loading...</p>
             ) : (
               <div className="space-y-2">
-                <p className="text-zinc-500">Message: {data?.message}</p>
-                <p className="text-sm text-zinc-500">
+                <p className="text-muted-foreground">
+                  Message: {data?.message}
+                </p>
+                <p className="text-muted-foreground text-sm">
                   Timestamp: {data?.timestamp?.toLocaleString()}
                 </p>
               </div>
             )}
           </div>
 
-          <div className="rounded-lg border border-zinc-800 p-6">
-            <h2 className="mb-2 text-xl font-medium text-zinc-50">
+          <div className="rounded-lg border p-6">
+            <h2 className="text-foreground mb-2 text-xl font-medium">
               Hello Query
             </h2>
-            <p className="text-zinc-500">{helloData?.greeting}</p>
+            <p className="text-muted-foreground">{helloData?.greeting}</p>
           </div>
         </div>
       </main>

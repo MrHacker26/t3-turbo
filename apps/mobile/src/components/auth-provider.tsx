@@ -50,7 +50,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const scheme = url.protocol.replace(':', '')
       const host = url.host
 
-      // Use mobile-signin endpoint which handles CSRF token and form submission
       const authUrl = `${webAppUrl}/api/auth/mobile-signin?scheme=${scheme}&host=${encodeURIComponent(host)}`
 
       const result = await WebBrowser.openAuthSessionAsync(authUrl, redirectUrl)
