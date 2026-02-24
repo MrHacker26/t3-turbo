@@ -12,6 +12,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc",
+    "clean": "rimraf node_modules dist .turbo",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",

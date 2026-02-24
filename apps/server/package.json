@@ -8,6 +8,7 @@
     "dev": "bun --watch src/index.ts",
     "build": "tsc",
     "start": "bun dist/index.js",
+    "clean": "rimraf node_modules dist .turbo",
     "lint": "eslint",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"

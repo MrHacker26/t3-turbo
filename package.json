@@ -10,7 +10,7 @@
     "lint:workspace": "turbo lint --ui=stream",
     "format": "turbo run format --continue -- --cache --ignore-path .gitignore --ignore-path ../../.gitignore",
     "typecheck": "turbo run typecheck --ui=stream",
-    "clean": "echo 'Cleaning...' && bunx rimraf --glob '**/{node_modules,dist,.next,.turbo}'",
+    "clean": "echo 'Cleaning...' && bunx rimraf --glob '**/{node_modules,dist,.next,.turbo,.expo}'",
     "typecheck:watch": "turbo typecheck:watch",
     "match-versions": "bun run scripts/match-versions.ts",
     "db:generate": "turbo db:generate --ui=stream",
@@ -37,5 +37,8 @@
     "eslint": "9",
     "picocolors": "1.1.1",
     "zod": "4.3.6"
+  },
+  "resolutions": {
+    "lightningcss": "1.30.1"
   }
 }

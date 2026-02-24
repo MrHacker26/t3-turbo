@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Text, Pressable, StyleSheet, ActivityIndicator } from 'react-native'
+import { Text, Pressable, ActivityIndicator } from 'react-native'
 
 import { useAuth } from './auth-provider'
 
@@ -19,36 +19,28 @@ export function GoogleSignInButton() {
 
   if (isLoading) {
     return (
-      <Pressable style={styles.button} disabled>
-        <ActivityIndicator color="#fff" />
+      <Pressable
+        className="bg-primary my-4 items-center rounded-lg p-4"
+        disabled
+      >
+        <ActivityIndicator color="#fbfbfb" />
       </Pressable>
     )
   }
 
   return (
-    <Pressable style={styles.button} onPress={handlePress} disabled={signing}>
+    <Pressable
+      className="bg-primary my-4 items-center rounded-lg p-4"
+      onPress={handlePress}
+      disabled={signing}
+    >
       {signing ? (
-        <ActivityIndicator color="#fff" />
+        <ActivityIndicator color="#fbfbfb" />
       ) : (
-        <Text style={styles.text}>
+        <Text className="text-primary-foreground text-base font-semibold">
           {token ? '🔓 Sign Out' : '🔐 Sign in with Google'}
         </Text>
       )}
     </Pressable>
   )
 }
-
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#4285F4',
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginVertical: 16,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-})

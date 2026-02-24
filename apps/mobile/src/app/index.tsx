@@ -1,7 +1,6 @@
 import { Link } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import {
-  StyleSheet,
   Text,
   View,
   ScrollView,
@@ -26,45 +25,57 @@ export default function Index() {
   } = trpc.example.getAll.useQuery()
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>T3 Turbo + Expo 🚀</Text>
+    <ScrollView className="bg-background flex-1">
+      <View className="flex-1 p-6 pt-6">
+        <Text className="text-foreground mb-6 text-3xl font-bold">
+          T3 Turbo + Expo 🚀
+        </Text>
 
         <GoogleSignInButton />
 
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Hello Query</Text>
+        <View className="border-border bg-card mb-4 rounded-xl border p-5">
+          <Text className="text-card-foreground mb-3 text-xl font-semibold">
+            Hello Query
+          </Text>
           {helloLoading ? (
-            <ActivityIndicator color="#a1a1aa" />
+            <ActivityIndicator color="#8b8b92" />
           ) : helloError ? (
             <View>
-              <Text style={styles.errorText}>
+              <Text className="text-destructive mb-2 text-base">
                 ❌ Error: {helloError.message}
               </Text>
-              <Text style={styles.errorSubtext}>
+              <Text className="text-muted-foreground text-sm">
                 Make sure your Next.js server is running on port 3000
               </Text>
             </View>
           ) : (
-            <Text style={styles.cardText}>{helloData?.greeting}</Text>
+            <Text className="text-muted-foreground text-base">
+              {helloData?.greeting}
+            </Text>
           )}
         </View>
 
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Get All Query</Text>
+        <View className="border-border bg-card mb-4 rounded-xl border p-5">
+          <Text className="text-card-foreground mb-3 text-xl font-semibold">
+            Get All Query
+          </Text>
           {allLoading ? (
-            <ActivityIndicator color="#a1a1aa" />
+            <ActivityIndicator color="#8b8b92" />
           ) : allError ? (
             <View>
-              <Text style={styles.errorText}>❌ Error: {allError.message}</Text>
-              <Text style={styles.errorSubtext}>
+              <Text className="text-destructive mb-2 text-base">
+                ❌ Error: {allError.message}
+              </Text>
+              <Text className="text-muted-foreground text-sm">
                 Make sure your Next.js server is running on port 3000
               </Text>
             </View>
           ) : (
             <>
-              <Text style={styles.cardText}>Message: {allData?.message}</Text>
-              <Text style={styles.cardSubtext}>
+              <Text className="text-muted-foreground mb-1 text-base">
+                Message: {allData?.message}
+              </Text>
+              <Text className="text-muted-foreground/80 text-sm">
                 Timestamp: {allData?.timestamp?.toLocaleString()}
               </Text>
             </>
@@ -72,8 +83,10 @@ export default function Index() {
         </View>
 
         <Link href="/profile" asChild>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Go to Profile →</Text>
+          <Pressable className="bg-primary mt-5 items-center rounded-lg p-4">
+            <Text className="text-primary-foreground text-base font-semibold">
+              Go to Profile →
+            </Text>
           </Pressable>
         </Link>
 
@@ -82,65 +95,3 @@ export default function Index() {
     </ScrollView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-  },
-  content: {
-    flex: 1,
-    padding: 24,
-    paddingTop: 24,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 24,
-  },
-  card: {
-    backgroundColor: '#18181b',
-    borderRadius: 12,
-    padding: 20,
-    marginBottom: 16,
-    borderWidth: 1,
-    borderColor: '#27272a',
-  },
-  cardTitle: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#fafafa',
-    marginBottom: 12,
-  },
-  cardText: {
-    fontSize: 16,
-    color: '#a1a1aa',
-    marginBottom: 4,
-  },
-  cardSubtext: {
-    fontSize: 14,
-    color: '#71717a',
-  },
-  errorText: {
-    fontSize: 16,
-    color: '#ef4444',
-    marginBottom: 8,
-  },
-  errorSubtext: {
-    fontSize: 14,
-    color: '#a1a1aa',
-  },
-  button: {
-    backgroundColor: '#3b82f6',
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-})

@@ -1,6 +1,6 @@
 import { useRouter, useLocalSearchParams } from 'expo-router'
 import { useEffect } from 'react'
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 
 export default function AuthCallback() {
   const router = useRouter()
@@ -17,23 +17,9 @@ export default function AuthCallback() {
   }, [router])
 
   return (
-    <View style={styles.container}>
-      <ActivityIndicator size="large" color="#3b82f6" />
-      <Text style={styles.text}>Completing sign in...</Text>
+    <View className="bg-background flex-1 items-center justify-center gap-4">
+      <ActivityIndicator size="large" color="#136e6b" />
+      <Text className="text-foreground text-base">Completing sign in...</Text>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 16,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 16,
-  },
-})
