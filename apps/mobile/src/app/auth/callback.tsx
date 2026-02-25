@@ -1,10 +1,9 @@
-import { useRouter, useLocalSearchParams } from 'expo-router'
+import { useRouter } from 'expo-router'
 import { useEffect } from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
 
 export default function AuthCallback() {
   const router = useRouter()
-  const params = useLocalSearchParams()
 
   useEffect(() => {
     // Auth session is handled by WebBrowser automatically

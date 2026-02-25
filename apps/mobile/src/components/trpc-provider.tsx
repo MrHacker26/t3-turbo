@@ -4,7 +4,7 @@ import type { AppRouter } from '@t3-turbo/trpc'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createTRPCClient, httpLink, loggerLink } from '@trpc/client'
 import { type ReactNode, useState } from 'react'
-import SuperJSON from 'superjson'
+import { SuperJSON } from 'superjson'
 
 import { useAuth } from './auth-provider'
 

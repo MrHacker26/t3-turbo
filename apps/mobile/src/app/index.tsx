@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 
 import { GoogleSignInButton } from '@/components/google-sign-in-button'
+import { ThemeSwitcher } from '@/components/theme-switcher'
 import { trpc } from '@/trpc/client'
 
 export default function Index() {
@@ -26,14 +27,15 @@ export default function Index() {
 
   return (
     <ScrollView className="bg-background flex-1">
-      <View className="flex-1 p-6 pt-6">
+      <View className="flex-1 gap-y-4 p-6 pt-6">
         <Text className="text-foreground mb-6 text-3xl font-bold">
           T3 Turbo + Expo 🚀
         </Text>
 
+        <ThemeSwitcher />
         <GoogleSignInButton />
 
-        <View className="border-border bg-card mb-4 rounded-xl border p-5">
+        <View className="border-border bg-card rounded-xl border p-5">
           <Text className="text-card-foreground mb-3 text-xl font-semibold">
             Hello Query
           </Text>
@@ -45,7 +47,7 @@ export default function Index() {
                 ❌ Error: {helloError.message}
               </Text>
               <Text className="text-muted-foreground text-sm">
-                Make sure your Next.js server is running on port 3000
+                Make sure your server is running on port 3000
               </Text>
             </View>
           ) : (
@@ -55,7 +57,7 @@ export default function Index() {
           )}
         </View>
 
-        <View className="border-border bg-card mb-4 rounded-xl border p-5">
+        <View className="border-border bg-card rounded-xl border p-5">
           <Text className="text-card-foreground mb-3 text-xl font-semibold">
             Get All Query
           </Text>
@@ -67,7 +69,7 @@ export default function Index() {
                 ❌ Error: {allError.message}
               </Text>
               <Text className="text-muted-foreground text-sm">
-                Make sure your Next.js server is running on port 3000
+                Make sure your server is running.
               </Text>
             </View>
           ) : (
